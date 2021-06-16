@@ -1,0 +1,13 @@
+{
+  "ui": true,
+  "log_level": "INFO",
+  "data_dir": "/tmp/consul/client1",
+  "node_name": "client1",
+  "bind_addr": "{{ GetInterfaceIP \"ens4\" }}",
+  "client_addr": "{{ GetInterfaceIP \"ens4\" }}",
+  "retry_join": [
+    "172.17.8.101",
+    "172.17.8.102",
+    "172.17.8.103"
+  ]
+}

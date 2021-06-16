@@ -1,0 +1,20 @@
+{
+  "server": true,
+  "ui": true,
+  "log_level": "INFO",
+  "data_dir": "/tmp/consul/server1",
+  "node_name": "server1",
+  "bind_addr": "{{ GetInterfaceIP \"ens4\" }}",
+  "client_addr": "{{ GetInterfaceIP \"ens4\" }}",
+  "bootstrap_expect": 3,
+  "retry_join": [
+    "172.17.8.102",
+    "172.17.8.103"
+  ],
+  "ports": {
+    "grpc": 8502
+  },
+  "connect": {
+    "enabled": true
+  }
+}

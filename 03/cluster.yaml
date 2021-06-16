@@ -1,0 +1,28 @@
+# Define the parameters for the cluster including
+# hostnames, ip addresses, system resources, and VM type.
+---
+- name: nomad-server1
+  hostname: nomad-server1
+  box: bento/ubuntu-18.04
+  ram: 1024
+  ip: 172.17.8.101
+- name: nomad-server2
+  hostname: nomad-server2
+  box: bento/ubuntu-18.04
+  ram: 1024
+  ip: 172.17.8.102
+- name: nomad-server3
+  hostname: nomad-server3
+  box: bento/ubuntu-18.04
+  ram: 1024
+  ip: 172.17.8.102
+- name: nomad-client01
+  hostname: client01
+  box: bento/ubuntu-18.04
+  ram: 1024
+  ip: 172.17.8.111
+- name: nomad-client02
+  hostname: client02
+  box: bento/ubuntu-18.04
+  ram: 1024
+  ip: 172.17.8.112
