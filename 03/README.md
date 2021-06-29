@@ -1,47 +1,21 @@
 # Multi Cluster
 
-## Bootstrap a Nomad Cluster Manually
-In this challenge, you will bootstrap a Nomad cluster with 3 servers and 2 Nomad clients using manual clustering.
+## Bootstrap a Nomad Cluster
 
-Let's start by looking at the nomad-server1.hcl configuration file on the "Config Files" tab on the left. You'll see that we are calling this server node server1, configuring the agent as a server, and indicating that we expect three servers in the cluster with the bootstrap_expect setting.
 
-Next, start server1 in the background on the "Server 1" tab by running:
-
-cd nomad
+```
+cd /vagrant
 nomad agent -config nomad-server1.hcl > nomad.log 2>&1 &
-You should see a single line like [1] 2174, which gives the PID of the Nomad server.
+```
 
-We suggest you also tail the nomad.log file by running tail -f nomad.log. This will show many messages including one that says "Nomad agent started!". It will also show some error messages saying "No cluster leader". That is expected at this point because we have not yet strated 3 servers.
-
-Now, look at the nomad-server2.hcl configuration file on the "Config Files" tab. Note that it is is similar to nomad-server1.hcl but has a server_join stanza indicating that server2 should repeatedly try to join server1 until it succeeds.
-
-Start the second Nomad server on the "Server 2" tab, specifing nomad-server2.hcl as the configuration file:
-
-cd nomad
-nomad agent -config nomad-server2.hcl > nomad.log 2>&1 &
-At this point, if you are still tailing the nomad.log for server1, you should see a message like "nomad: serf: EventMemberJoin: server2.global".
-
-If you look at the nomad-server3.hcl configuration file on the "Config Files" tab, you'll see that it also includes a server_join stanza indicating that server3 should repeatedly try to join server1 until it succeeds.
-
-Start the third Nomad server on the "Server 3" tab, specifing nomad-server3.hcl as the configuration file:
-
-cd nomad
-nomad agent -config nomad-server3.hcl > nomad.log 2>&1 &
-At this point, if you are still tailing the nomad.log for server1, you should see messages indicating that server3 joined the cluster and that server1 has been elected the cluster's leader.
-
-To double-check that all 3 servers have joined the cluster, run this command on the "Server 3" tab:
-
+```
 nomad server members
-You should see output listing all 3 server nodes, all 3 of which should be considered "alive". server1 should be considered the leader of the cluster.
+```
 
-If clicking the Check button at the end of the challenge says you have not done this, you might have run it on one of the other tabs. Please run it again on the "Server 3" tab so that it will end up in your .bash_history file on the nomad-server-3 VM.
-
-Now, look at the nomad-client1.hcl configuration file on the "Config Files" tab. This file indicates that the agent will run as a client node and connect to the nomad-server-1 server.
-
-Next, run the first Nomad client on the "Client 1" tab:
-
-cd nomad
+```
+cd /vagrant
 nomad agent -config nomad-client1.hcl > nomad.log 2>&1 &
+```
 You should see a single line like [1] 2241, which gives the PID of the first client. You can inspect the nomad.log file by running cat nomad.log. This will show many messages including one that says "Nomad agent started!"
 
 Now, look at the nomad-client2.hcl configuration file on the "Config Files" tab. It is very similar to the nomad-client1.hcl file.
@@ -49,7 +23,10 @@ Now, look at the nomad-client2.hcl configuration file on the "Config Files" tab.
 Start the second Nomad client on the "Client 2" tab, but specify nomad-client2.hcl as the configuration file:
 
 cd nomad
+```
+cd /vagrant
 nomad agent -config nomad-client2.hcl > nomad.log 2>&1 &
+```
 You should see a single line like [1] 2065, which gives the PID of the second client. As with the first client, you can inspect the nomad.log file by running cat nomad.log.
 
 Check the status of the Nomad client nodes on the "Server 3" tab:

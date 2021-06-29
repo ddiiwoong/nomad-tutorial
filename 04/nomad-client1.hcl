@@ -7,6 +7,7 @@ name = "client1"
 # Enable the client
 client {
   enabled = true
+  servers = ["nomad-server1.local:4647"]
 }
 
 # Telemetry

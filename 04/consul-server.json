@@ -4,7 +4,7 @@
   "log_level": "INFO",
   "data_dir": "/tmp/consul/server",
   "node_name": "server",
-  "bind_addr": "{{ GetInterfaceIP \"ens4\" }}",
+  "bind_addr": "{{ GetInterfaceIP \"eth1\" }}",
   "client_addr": "0.0.0.0",
   "bootstrap_expect": 1
 }
