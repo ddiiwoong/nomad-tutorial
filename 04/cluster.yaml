@@ -4,16 +4,16 @@
 - name: nomad-server1
   hostname: nomad-server1
   box: bento/ubuntu-18.04
-  ram: 1024
+  ram: 1516
 - name: nomad-client1
   hostname: nomad-client1
   box: bento/ubuntu-18.04
-  ram: 1024
+  ram: 1516
 - name: nomad-client2
   hostname: nomad-client2
   box: bento/ubuntu-18.04
-  ram: 1024
+  ram: 1516
 - name: nomad-client3
   hostname: nomad-client3
   box: bento/ubuntu-18.04
-  ram: 1024
+  ram: 1516
